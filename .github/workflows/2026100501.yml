@@ -1,0 +1,17 @@
+name: "Build curl-impersonate [target:i686]"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc g++ cmake ninja-build make patch binutils ca-certificates curl
+          git clone --depth 1 https://github.com/lexiforest/curl-impersonate.git
+          cd curl-impersonate
+          git rev-parse HEAD
+          make prepare-libidn2
+          make build CMAKE_CONFIGURE_ARGS="-DCMAKE_SYSTEM_PROCESSOR=i686 -DCMAKE_INSTALL_PREFIX=${{ runner.temp }}"
