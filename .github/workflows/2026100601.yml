@@ -1,0 +1,16 @@
+name: "2026100601: Get fp (chrome150)"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -LO https://github.com/lexiforest/curl-impersonate/releases/download/v2.2.3/curl-impersonate-v2.2.3.x86_64-linux-gnu.tar.gz
+          tar -xzf curl-impersonate-v2.2.3.x86_64-linux-gnu.tar.gz
+          for i in $(seq 1 10); do
+            curl -fsS https://kittens.sh/api/clean
+            sleep 10
+          done
