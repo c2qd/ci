@@ -1,0 +1,8 @@
+name: "2026102101"
+on:
+  workflow_dispatch:
+jobs:
+  x:
+    runs-on: windows-2022
+    steps:
+      - run: Get-Volume
